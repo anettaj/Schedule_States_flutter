@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../constance.dart';
 
 class ToggleSwitch extends StatefulWidget {
@@ -26,7 +25,7 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
         activeTrackColor: kactiveTrackColor,
         activeColor: kactiveColor,
         inactiveThumbColor: kinactiveThumbColor,
-        inactiveTrackColor: kinactiveTrackColor.withOpacity(0.05),
+        inactiveTrackColor: kinactiveTrackColor,
         trackOutlineColor: MaterialStateProperty.resolveWith<Color>((states) {
           if (states.contains(MaterialState.pressed)) {
             return kinactiveOutlineColor;

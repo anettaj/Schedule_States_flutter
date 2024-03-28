@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 //togglebutton
 Color kinactiveThumbColor=Color(0xff4B0D55);
-const kactiveColor=Colors.white;
+const kactiveColor=Color(0xffFfffff);
 const kactiveTrackColor=Color(0xff6CDB98);
-const Color kinactiveTrackColor=Colors.black12;
-const kinactiveOutlineColor=Colors.green;
+const kinactiveTrackColor=Color(0xffF6F4FA);
+const kinactiveOutlineColor=Colors.transparent;
 const kactiveOutlineColor=Colors.transparent;
 
 //scheduleCard

@@ -46,7 +46,7 @@ class _ScheduleCardState extends State<ScheduleCard> {
                 contentPadding: EdgeInsets.zero,
                 title: Text(widget.weekName, style: kWeekNameStyle),
                 trailing: ToggleSwitch(),
-                subtitle: expanded ? Text("$dropdownfrom-$dropdownto") : Text("data"),
+                subtitle: expanded ? Text("$dropdownfrom-$dropdownto") : Text(""),
 
               ),
               children: [

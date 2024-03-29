@@ -22,7 +22,7 @@ class _ScheduleCardState extends State<ScheduleCard> {
   String dropdownto = '9:30';
   var from = ['9:30', '10:00', '10:30', '11:00', '11:30'];
   var to = ['9:30', '10:00', '10:30', '11:00', '11:30'];
-
+  bool expanded=true;
   @override
   Widget build(BuildContext context) {
     double W = ScreenSize.Width(context);
@@ -33,15 +33,21 @@ class _ScheduleCardState extends State<ScheduleCard> {
           margin: EdgeInsets.only(top: 10, left: 10),
           child: Theme(
             data: Theme.of(context).copyWith(
-              dividerColor: kThemeDividerColor, // Remove divider line
+              dividerColor: kThemeDividerColor,
             ),
             child: ExpansionTile(
+              onExpansionChanged: (value) {
+                expanded=value!;
+
+              },
               controlAffinity: ListTileControlAffinity.leading,
               tilePadding: EdgeInsets.only(left: 10, right: 10),
               title: ListTile(
                 contentPadding: EdgeInsets.zero,
                 title: Text(widget.weekName, style: kWeekNameStyle),
                 trailing: ToggleSwitch(),
+                subtitle: expanded ? Text("$dropdownfrom-$dropdownto") : Text("data"),
+
               ),
               children: [
                 Padding(
@@ -136,4 +142,5 @@ class _ScheduleCardState extends State<ScheduleCard> {
       ),
     );
   }
+
 }

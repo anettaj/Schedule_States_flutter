@@ -24,8 +24,7 @@ class _HomeState extends State<Home> {
 
     double H = ScreenSize.Height(context);
     double W = ScreenSize.Width(context);
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           leading: Icon(Icons.arrow_back,
             color:HomeThemeColor
@@ -46,9 +45,10 @@ class _HomeState extends State<Home> {
             children: [
               pageTitle(),
               InkWell(
-                onTap: (){
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => location(),)
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => location()),
                   );
                 },
                 child: Stack(
@@ -87,7 +87,7 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-      ),
+
     );
   }
 

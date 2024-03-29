@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schedule_states_flutter/Components/size.dart';
 import '../Components/Widgets/scheduleCard.dart';
 import '../Components/constance.dart';
+import 'location.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key});
@@ -44,36 +45,43 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               pageTitle(),
-              Stack(
-                children: [
-                  Container(
-                    height: H * 0.29,
-                    width: W,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: AssetImage('assets/map.png'))
+              InkWell(
+                onTap: (){
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => location(),)
+                  );
+                },
+                child: Stack(
+                  children: [
+                    Container(
+                      height: H * 0.29,
+                      width: W,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage('assets/map.png'))
+                      ),
                     ),
-                  ),
-                  Container(
-                    height: H * 0.29,
-                    width: W,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.add_location_outlined,
-                        size: 35,
-                          color: HomeThemeColor,
-                        ),
-                        Text("Set Location",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: HomeThemeColor
-                        ),)
-                      ],
-                    ),
-                  )
-                ],
+                    Container(
+                      height: H * 0.29,
+                      width: W,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.add_location_outlined,
+                          size: 35,
+                            color: HomeThemeColor,
+                          ),
+                          Text("Set Location",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: HomeThemeColor
+                          ),)
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
               ...scheduleCards,
             ],

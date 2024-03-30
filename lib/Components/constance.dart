@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 //togglebutton
 Color kinactiveThumbColor=Color(0xff4B0D55);
 const kactiveColor=Color(0xffFfffff);
-const kactiveTrackColor=Color(0xff6CDB98);
+const kactiveTrackColor=Color(0xff98FF98);
 const kinactiveTrackColor=Color(0xffF6F4FA);
 const kinactiveOutlineColor=Colors.transparent;
 const kactiveOutlineColor=Colors.transparent;
@@ -24,3 +24,6 @@ const kWeekNameStyle=TextStyle(
 const kThemeDividerColor=Colors.transparent;
 
 Color  HomeThemeColor=Color(0xff4B0D55);
+Color LocationButtonColor=Color(0xff98FF98);
+Color LocationButtonTextColor=Color(0xff483248);
+Color LocationSearchTextField=Color(0xffDFE1DF);

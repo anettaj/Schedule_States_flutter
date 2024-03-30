@@ -28,23 +28,83 @@ class _locationState extends State<location> {
             ),
           ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextField(),
-              Column(
-                children: [
-                  TextButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll<Color>(LocationButtonColor)
-                    ),
-                      onPressed: (){},
-                      child: Text('Set Location'),
-                  )
-                ],
+              SizedBox(
+                width: W*0.1,
+                height: H*0.8,
+                child: TextField(
+
+                  decoration: InputDecoration(
+                    fillColor: LocationSearchTextField,
+                    border: InputBorder(borderSide: BorderSide(
+
+                    ))
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Column(
+                  children: [
+                    LocationButton(onPressed: (){}, Title: 'Set Location', color: LocationButtonColor,),
+                    LocationButton(onPressed: (){}, Title: 'Cancel', color: Colors.white,)
+                  ],
+                ),
               )
             ],
           )
         ],
       )
+    );
+  }
+}
+
+class LocationButton extends StatefulWidget {
+  LocationButton({
+    Key?key,
+    required this.onPressed,
+    required this.Title,
+    required this.color,
+  });
+  final Function onPressed;
+  final String Title;
+  final Color color;
+
+  @override
+  State<LocationButton> createState() => _LocationButtonState();
+}
+
+class _LocationButtonState extends State<LocationButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextButton(
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+            EdgeInsets.all(15),
+          ),
+          backgroundColor: MaterialStateProperty.all<Color>(
+            widget.color,
+          ),
+          minimumSize: MaterialStateProperty.all<Size>(
+            Size(double.infinity, 0),
+          ),
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+          ),
+        ),
+          onPressed: (){
+          widget.onPressed;
+          },
+          child: Text('${widget.Title}',
+          style: TextStyle(
+            color: LocationButtonTextColor
+          ),),
+      ),
     );
   }
 }

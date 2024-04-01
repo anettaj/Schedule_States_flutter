@@ -12,11 +12,13 @@ class location extends StatefulWidget {
 }
 
 class _locationState extends State<location> {
+  bool setLocation=false;
   @override
   Widget build(BuildContext context) {
     double H = ScreenSize.Height(context);
     double W = ScreenSize.Width(context);
     return Scaffold(
+        resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Container(
@@ -62,79 +64,118 @@ class _locationState extends State<location> {
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Column(
                     children: [
-                      LocationButton(onPressed: (){_displayDialogeBox();}, Title: 'Set Location', color: LocationButtonColor,),
-                      LocationButton(onPressed: (){}, Title: 'Cancel', color: Colors.white,)
+                      LocationButton(onPressed: (){
+                        setState(() {
+                          setLocation=true;
+                        });
+                        }, Title: 'Set Location', color: LocationButtonColor,),
+                      LocationButton(onPressed: (){
+                        Navigator.pop(context);
+                      }, Title: 'Cancel', color: Colors.white,)
                     ],
                   ),
                 )
               ],
             ),
-          )
+          ),
+          if(setLocation)
+            Stack(
+              children: [
+              Container(
+                width: W,
+                height: H,
+                color: Colors.black.withOpacity(0.5),
+              ),
+                SingleChildScrollView(
+                  child: Container(
+                    width: W,
+                    height: H,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.5),
+                          offset: Offset(1, 2),
+                          blurRadius: 3,
+                          spreadRadius: 0,
+                        ),
+                      ]
+                    ),
+                    child: Center(
+                      child: Container(
+                        width: W,
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                          ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Name a location',
+                                    style: TextStyle(
+                                      color:LocationSearchTitleColor,
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.w600
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        setLocation=false;
+                                      });
+                                    },
+                                    child: Icon(Icons.close_outlined),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 40),
+                            Container(
+                              width: W,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: LocationSearchTextField
+                              ),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    filled: true,
+                                    labelText: "Save as",
+                                    fillColor: Colors.transparent,
+                                    floatingLabelBehavior: FloatingLabelBehavior.auto,
+                                    suffixIconColor: LocationSearchTextFieldIconColor,
+                                    prefixIconColor: LocationSearchTextFieldIconColor,
+                                    border: InputBorder.none
+
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 15),
+                            LocationButton(
+                              onPressed: (){},
+                              Title: 'Save',
+                              color: LocationAlertWidgetButtonColor,
+                              TColor: LocationAlertWidgetButtonTextColor,
+                            ),
+                            SizedBox(height: 15),
+
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
         ],
       )
     );
   }
-  void _displayDialogeBox(){
-    double W = ScreenSize.Width(context);
-    double H = ScreenSize.Height(context);
-    showDialog(
-        context: context,
-        builder: (BuildContext context){
-          return AlertDialog(
-            contentPadding: EdgeInsets.only(left: 20,right: 20,bottom: 20),
-            title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Name a Location'),
-              InkWell(
-                onTap: () {
-                  Navigator.maybePop(context);
-                },
-                child: Icon(Icons.close_outlined),
-              ),
-            ],
-          ),
 
-            content: SingleChildScrollView(
-              child:  Container(
-                // padding: EdgeInsets.all(15),
-                width: W,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: H*0.025,
-                    ),
-                    Container(
-                      width: W,
-
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: LocationSearchTextField
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          filled: true,
-                          labelText: "Save as",
-                          fillColor: Colors.transparent,
-                          floatingLabelBehavior: FloatingLabelBehavior.auto,
-                          suffixIconColor: LocationSearchTextFieldIconColor,
-                          prefixIconColor: LocationSearchTextFieldIconColor,
-                          border: InputBorder.none
-
-                        ),
-                      ),
-                    ),
-
-                    LocationButton(onPressed: (){}, Title: 'Save', color: LocationAlertWidgetButtonColor, TColor: LocationAlertWidgetButtonTextColor,)
-                  ],
-                ),
-              ),
-            ),
-          );
-        }
-    );
-  }
 }
 
 

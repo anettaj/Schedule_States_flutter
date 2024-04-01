@@ -25,10 +25,11 @@ const kThemeDividerColor=Colors.transparent;
 
 Color  HomeThemeColor=Color(0xff4B0D55);
 Color LocationButtonColor=Color(0xff98FF98);
-Color LocationButtonTextColor=Color(0xff483248);
+Color LocationButtonTextColor=Color(0xff4B0D55);
 Color LocationSearchTextField=Color(0xffDFE1DF);
+Color LocationSearchTitleColor=Color(0xff472C4C);
 Color LocationSearchTextFieldIconColor=Color(0xff472C4C);
 Color LocationSearchTextFieldHintColor=Color(0xff472C4C);
 Color LocationSearchTextFieldBorderColor=Color(0xff472C4C);
-Color LocationAlertWidgetButtonColor=Color(0xff472C4C);
+Color LocationAlertWidgetButtonColor=Color(0xff4B0D55);
 Color LocationAlertWidgetButtonTextColor=Color(0xffDFE1DF);

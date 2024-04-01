@@ -30,3 +30,5 @@ Color LocationSearchTextField=Color(0xffDFE1DF);
 Color LocationSearchTextFieldIconColor=Color(0xff472C4C);
 Color LocationSearchTextFieldHintColor=Color(0xff472C4C);
 Color LocationSearchTextFieldBorderColor=Color(0xff472C4C);
+Color LocationAlertWidgetButtonColor=Color(0xff472C4C);
+Color LocationAlertWidgetButtonTextColor=Color(0xffDFE1DF);

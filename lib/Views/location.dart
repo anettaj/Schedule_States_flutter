@@ -62,7 +62,7 @@ class _locationState extends State<location> {
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Column(
                     children: [
-                      LocationButton(onPressed: (){}, Title: 'Set Location', color: LocationButtonColor,),
+                      LocationButton(onPressed: (){_displayDialogeBox();}, Title: 'Set Location', color: LocationButtonColor,),
                       LocationButton(onPressed: (){}, Title: 'Cancel', color: Colors.white,)
                     ],
                   ),
@@ -74,7 +74,71 @@ class _locationState extends State<location> {
       )
     );
   }
+  void _displayDialogeBox(){
+    double W = ScreenSize.Width(context);
+    double H = ScreenSize.Height(context);
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            contentPadding: EdgeInsets.only(left: 20,right: 20,bottom: 20),
+            title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Name a Location'),
+              InkWell(
+                onTap: () {
+                  Navigator.maybePop(context);
+                },
+                child: Icon(Icons.close_outlined),
+              ),
+            ],
+          ),
+
+            content: SingleChildScrollView(
+              child:  Container(
+                // padding: EdgeInsets.all(15),
+                width: W,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: H*0.025,
+                    ),
+                    Container(
+                      width: W,
+
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: LocationSearchTextField
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          labelText: "Save as",
+                          fillColor: Colors.transparent,
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          suffixIconColor: LocationSearchTextFieldIconColor,
+                          prefixIconColor: LocationSearchTextFieldIconColor,
+                          border: InputBorder.none
+
+                        ),
+                      ),
+                    ),
+
+                    LocationButton(onPressed: (){}, Title: 'Save', color: LocationAlertWidgetButtonColor, TColor: LocationAlertWidgetButtonTextColor,)
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
+    );
+  }
 }
+
+
+
 
 class LocationButton extends StatefulWidget {
   LocationButton({
@@ -82,10 +146,12 @@ class LocationButton extends StatefulWidget {
     required this.onPressed,
     required this.Title,
     required this.color,
+    this.TColor
   });
   final Function onPressed;
   final String Title;
   final Color color;
+  Color?TColor;
 
   @override
   State<LocationButton> createState() => _LocationButtonState();
@@ -119,11 +185,11 @@ class _LocationButtonState extends State<LocationButton> {
 
           ),
             onPressed: (){
-            widget.onPressed;
+            widget.onPressed();
             },
             child: Text('${widget.Title}',
             style: TextStyle(
-              color: LocationButtonTextColor
+              color: widget.TColor??LocationButtonTextColor
             ),),
         ),
       ),

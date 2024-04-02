@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_states_flutter/Components/size.dart';
+import 'package:schedule_states_flutter/Modal/Data.dart';
 import '../Components/Widgets/scheduleCard.dart';
 import '../Components/constance.dart';
 import 'location.dart';
@@ -12,14 +13,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  HomePageData homeData=HomePageData();
   List<Widget> scheduleCards = [];
-  List<String> weekNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 
   @override
   Widget build(BuildContext context) {
     for (int i = 6, j = 0; i >= 0; i--, j++) {
-      scheduleCards.add(ScheduleCard(weekName: weekNames[j]));
+      scheduleCards.add(ScheduleCard(weekName: homeData.weekNames[j]));
     }
 
     double H = ScreenSize.Height(context);
@@ -32,7 +33,7 @@ class _HomeState extends State<Home> {
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 12),
-              child: Text('Save',
+              child: Text(homeData.AppbarActionText,
               style: TextStyle(
                 color: HomeThemeColor
               ),),
@@ -72,7 +73,7 @@ class _HomeState extends State<Home> {
                           size: 35,
                             color: HomeThemeColor,
                           ),
-                          Text("Set Location",
+                          Text(homeData.ClickableLinkText,
                           style: TextStyle(
                             fontSize: 20,
                             color: HomeThemeColor
@@ -95,7 +96,7 @@ class _HomeState extends State<Home> {
     return Padding(
       padding: const EdgeInsets.only(left: 20, top: 10, bottom: 8),
       child: Text(
-        'Schedule',
+        homeData.HomePageTitle,
         style: TextStyle(
           color: HomeThemeColor,
           fontSize: 22,

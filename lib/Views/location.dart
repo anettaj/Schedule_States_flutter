@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule_states_flutter/Modal/Data.dart';
 
 import '../Components/constance.dart';
 import '../Components/size.dart';
@@ -12,6 +13,7 @@ class location extends StatefulWidget {
 }
 
 class _locationState extends State<location> {
+  LocationPageData locationData=LocationPageData();
   bool setLocation=false;
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class _locationState extends State<location> {
                         fillColor: LocationSearchTextField,
                         prefixIcon: Icon(Icons.search),
                         suffixIcon: Icon(Icons.tune),
-                        hintText: "Search address",
+                        hintText: locationData.LocationHintText,
                         hintStyle: TextStyle(
                           color: LocationSearchTextFieldHintColor
                         ),
@@ -68,10 +70,10 @@ class _locationState extends State<location> {
                         setState(() {
                           setLocation=true;
                         });
-                        }, Title: 'Set Location', color: LocationButtonColor,),
+                        }, Title: locationData.LocationButtonText1, color: LocationButtonColor,),
                       LocationButton(onPressed: (){
                         Navigator.pop(context);
-                      }, Title: 'Cancel', color: Colors.white,)
+                      }, Title: locationData.LocationButtonText2, color: Colors.white,)
                     ],
                   ),
                 )
@@ -116,7 +118,7 @@ class _locationState extends State<location> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('Name a location',
+                                  Text(locationData.LocationDialogeboxTitle,
                                     style: TextStyle(
                                       color:LocationSearchTitleColor,
                                       fontSize: 28,
@@ -144,7 +146,7 @@ class _locationState extends State<location> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     filled: true,
-                                    labelText: "Save as",
+                                    labelText: locationData.LocationDialogeboxlabelText,
                                     fillColor: Colors.transparent,
                                     floatingLabelBehavior: FloatingLabelBehavior.auto,
                                     suffixIconColor: LocationSearchTextFieldIconColor,
@@ -157,7 +159,7 @@ class _locationState extends State<location> {
                             SizedBox(height: 15),
                             LocationButton(
                               onPressed: (){},
-                              Title: 'Save',
+                              Title: locationData.LocationDialogeboxButton,
                               color: LocationAlertWidgetButtonColor,
                               TColor: LocationAlertWidgetButtonTextColor,
                             ),

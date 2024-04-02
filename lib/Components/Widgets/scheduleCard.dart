@@ -2,6 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule_states_flutter/Components/Widgets/toggleBotton.dart';
+import 'package:schedule_states_flutter/Modal/Data.dart';
 import '../constance.dart';
 import '../size.dart';
 
@@ -18,10 +19,7 @@ class ScheduleCard extends StatefulWidget {
 }
 
 class _ScheduleCardState extends State<ScheduleCard> {
-  String dropdownfrom = '9:30';
-  String dropdownto = '9:30';
-  var from = ['9:30', '10:00', '10:30', '11:00', '11:30'];
-  var to = ['9:30', '10:00', '10:30', '11:00', '11:30'];
+  HomePageData homePageData =HomePageData();
   bool expanded=true;
   @override
   Widget build(BuildContext context) {
@@ -46,7 +44,7 @@ class _ScheduleCardState extends State<ScheduleCard> {
                 contentPadding: EdgeInsets.zero,
                 title: Text(widget.weekName, style: kWeekNameStyle),
                 trailing: ToggleSwitch(),
-                subtitle: expanded ? Text("$dropdownfrom-$dropdownto") : Text(""),
+                subtitle: expanded ? Text("${homePageData.dropdownfrom}-${homePageData.dropdownto}") : Text(""),
 
               ),
               children: [
@@ -58,10 +56,10 @@ class _ScheduleCardState extends State<ScheduleCard> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("From", style: kDropDownTextStyle),
-                          dropDown(from, H, W, dropdownfrom, (value) {
+                          Text(homePageData.DropdownText1, style: kDropDownTextStyle),
+                          dropDown(homePageData.from, H, W, homePageData.dropdownfrom, (value) {
                             setState(() {
-                              dropdownfrom = value!;
+                              homePageData.dropdownfrom = value!;
                             });
                           }),
                         ],
@@ -69,10 +67,10 @@ class _ScheduleCardState extends State<ScheduleCard> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("To", style: kDropDownTextStyle),
-                          dropDown(to, H, W, dropdownto, (value) {
+                          Text(homePageData.DropdownText2, style: kDropDownTextStyle),
+                          dropDown(homePageData.to, H, W, homePageData.dropdownto, (value) {
                             setState(() {
-                              dropdownto = value!;
+                              homePageData.dropdownto = value!;
                             });
                           }),
                         ],

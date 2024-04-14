@@ -1,16 +1,15 @@
-# schedule_states_flutter
+# Schedule
+subtask of an application
 
-A new Flutter project.
+## Screenshots
+[<img src="https://github.com/anettaj/Schedule_States_flutter/assets/58222128/064d2918-063a-43cc-8e0b-572f55b8ecbb" align="left"
+width="200"
+    hspace="10" vspace="10">](https://github.com/anettaj/Schedule_States_flutter/assets/58222128/064d2918-063a-43cc-8e0b-572f55b8ecbb)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[<img src="https://github.com/anettaj/Schedule_States_flutter/assets/58222128/5171f935-526b-4a76-8083-d168163940c5" align="left"
+width="200"
+    hspace="10" vspace="10">](https://github.com/anettaj/Schedule_States_flutter/assets/58222128/5171f935-526b-4a76-8083-d168163940c5)
+    
+[<img src="https://github.com/anettaj/Schedule_States_flutter/assets/58222128/19cbd052-de45-461c-bcba-196790782a3f" align="left"
+width="200"
+    hspace="10" vspace="10">](https://github.com/anettaj/Schedule_States_flutter/assets/58222128/19cbd052-de45-461c-bcba-196790782a3f)
